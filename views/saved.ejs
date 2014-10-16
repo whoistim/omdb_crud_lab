@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>All my Fav Movies</title>
+</head>
+<body>
+<h1>My Favorite Movies</h1>
+<form action="/">
+	<input type="submit" value="Find More Movies">
+</form>
+	<% if(myMovies.length < 1) { %>
+	<!-- separate the html from the javascript line by line -->
+	<h1>"You have no favorites!"</h1>
+	<% } %>
+	<ul>
+	  <% myMovies.forEach(function(film){%>
+
+		<li><%= film.title %> -- <%= film.year %> 
+		<form action="/delete?_method=delete" method="POST">
+			<input type="hidden" name="id" value="<%= film.id %>">
+			<input type="submit" value="Delete me!">
+		</form></li>
+  	<%}) %>
+
+
+
+	</ul>
+</body>
+</html>
